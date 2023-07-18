@@ -54,7 +54,7 @@ export default function Login() {
                     required: 'email is required',
                     pattern: {
                       value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
-                      message: 'email not valid',
+                      message: 'Email not valid',
                     },
                   })}
                   type="email"

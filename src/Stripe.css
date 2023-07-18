@@ -1,21 +1,5 @@
-.stripe #root {
-  display: flex;
-  align-items: center;
-}
 
-.stripe body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 100vh;
-  width: 100vw;
-}
-
-
-.stripe form {
+.Stripe form {
   width: 30vw;
   min-width: 500px;
   align-self: center;
@@ -25,8 +9,7 @@
   padding: 40px;
 }
 
-
-.stripe #payment-message {
+#payment-message {
   color: rgb(105, 115, 134);
   font-size: 16px;
   line-height: 20px;
@@ -34,12 +17,12 @@
   text-align: center;
 }
 
-.stripe #payment-element {
+#payment-element {
   margin-bottom: 24px;
 }
 
 /* Buttons and links */
-.stripe button {
+.Stripe button {
   background: #5469d4;
   font-family: Arial, sans-serif;
   color: #ffffff;
@@ -55,11 +38,11 @@
   width: 100%;
 }
 
-.stripe button:hover {
+.Stripe button:hover {
   filter: contrast(115%);
 }
 
-.stripe button:disabled {
+.Stripe button:disabled {
   opacity: 0.5;
   cursor: default;
 }

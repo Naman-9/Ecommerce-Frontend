@@ -7,10 +7,10 @@ const Logout = () => {
 
     const dispatch = useDispatch();
     const user = useSelector(selectLoggedInUser);
-
-    useEffect((userId) => {
-        dispatch(signOutAsync(userId));
-    })
+  
+    useEffect(() => {
+      dispatch(signOutAsync());
+    });
   return (
     <>
     {!user && < Navigate to="/" replace= {true} ></Navigate>}

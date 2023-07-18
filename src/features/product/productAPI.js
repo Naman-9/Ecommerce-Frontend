@@ -1,7 +1,7 @@
 
 export function fetchProductById(id) {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/products/' + id, {credentials: 'include',});
+    const response = await fetch('/products/' + id, {credentials: 'include',});
     const data = await response.json();
     resolve({ data });
   });
@@ -9,7 +9,7 @@ export function fetchProductById(id) {
 
 export function createProduct(product) {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/products/', {
+    const response = await fetch('/products/', {
       method: 'POST',
       body: JSON.stringify(product),
       headers: { 'content-type': 'application/json' },
@@ -23,7 +23,7 @@ export function createProduct(product) {
 export function updateProduct(update) {
   return new Promise(async (resolve) => {
     const response = await fetch(
-      'http://localhost:8080/products/' + update.id,
+      '/products/' + update.id,
       {
         method: 'PATCH',
         body: JSON.stringify(update),
@@ -60,7 +60,7 @@ export function fetchProductsByFilters(filter, sort, pagination, admin) {
 
   return new Promise(async (resolve) => {
     const response = await fetch(
-      'http://localhost:8080/products?' + queryString,
+      '/products?' + queryString,
       {credentials: 'include',}
     );
     const data = await response.json();
@@ -71,7 +71,7 @@ export function fetchProductsByFilters(filter, sort, pagination, admin) {
 
 export function fetchCategories() {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/categories', {credentials: 'include',});
+    const response = await fetch('/categories', {credentials: 'include',});
     const data = await response.json();
     resolve({ data });
   });
@@ -79,7 +79,7 @@ export function fetchCategories() {
 
 export function fetchBrands() {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/brands', {credentials: 'include',} );
+    const response = await fetch('/brands', {credentials: 'include',} );
     const data = await response.json();
     resolve({ data });
   });

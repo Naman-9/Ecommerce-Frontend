@@ -11,7 +11,7 @@ export default function SignUp() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const user = useSelector(selectLoggedInUser);
 
-  console.log("error:", errors);
+  
 
   return (
     <>
@@ -21,8 +21,7 @@ export default function SignUp() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto"
-            // TODO: Logo
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            src="https://tailwindui.com/img/logos/158x48/transistor-logo-indigo-900.svg"
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -33,8 +32,7 @@ export default function SignUp() {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form noValidate className="space-y-6" onSubmit={handleSubmit((data) => {
             dispatch(createUserAsync({ email: data.email, password: data.password, addresses: [], role: "user" }))
-            //TODO: Assign role from backend
-            console.log(data)
+            
           })}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">

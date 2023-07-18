@@ -6,13 +6,6 @@ import { Link } from 'react-router-dom'
 import { selectItems } from '../cart/cartSlice';
 import { selectUserInfo } from '../user/userSlice';
 
-//  TODO: Handle image
-const user = {
-    name: 'Tom Cook',
-    email: 'tom@example.com',
-    imageUrl:
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
 
 const navigation = [
     { name: 'Products', link: '/', user: true },
@@ -49,8 +42,7 @@ const Navbar = ({ children }) => {
                                             <div className="flex-shrink-0">
                                                 <img
                                                     className="h-8 w-8"
-                                                    // TODO: Logo
-                                                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                                                    src="/ecommerce.png"
                                                     alt="Your Company"
                                                 />
                                             </div>
@@ -131,7 +123,6 @@ const Navbar = ({ children }) => {
                                         </div>
                                     </div>
                                     <div className="-mr-2 flex md:hidden">
-                                        {/* TODO: handle mobile Admin  */}
                                         {/* Mobile menu button */}
                                         <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                             <span className="sr-only">Open main menu</span>
@@ -207,7 +198,7 @@ const Navbar = ({ children }) => {
 
                 <header className="bg-white shadow">
                     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Ecomm</h1>
+                        <h1 className="text-3xl font-bold tracking-tight text-gray-900">FashionPlus</h1>
                     </div>
                 </header>
                 <main>

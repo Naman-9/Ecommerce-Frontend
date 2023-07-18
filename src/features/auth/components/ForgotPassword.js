@@ -18,8 +18,7 @@ export default function ForgotPassword() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto"
-                        // TODO: Logo
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            src="https://tailwindui.com/img/logos/158x48/transistor-logo-indigo-900.svg"
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -29,7 +28,7 @@ export default function ForgotPassword() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form noValidate className="space-y-6" onSubmit={handleSubmit((data) => {
-            console.log(data);
+            
             dispatch(resetPasswordRequestAsync(data.email));
           })}>
             <div>

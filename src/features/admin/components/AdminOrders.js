@@ -27,7 +27,7 @@ function AdminOrders() {
     setEditableOrderId(order.id);
   };
   const handleShow = () => {
-    console.log('handleShow');
+    
   };
 
   const handleOrderStatus = (e, order) => {
@@ -48,7 +48,7 @@ function AdminOrders() {
 
   const handleSort = (sortOption) => {
     const sort = { _sort: sortOption.sort, _order: sortOption.order };
-    console.log({ sort });
+    
     setSort(sort);
   };
 
@@ -182,7 +182,7 @@ function AdminOrders() {
                           </div>
                           <span>
                             {item.product.title} - #{item.quantity} - $
-                            {item.product.discountedPrice}
+                            {item.product.discountPrice}
                           </span>
                         </div>
                       ))}

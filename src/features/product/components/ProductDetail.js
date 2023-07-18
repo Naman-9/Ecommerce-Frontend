@@ -24,8 +24,6 @@ export default function ProductDetail() {
   const [selectedColor, setSelectedColor] = useState();
   const [selectedSize, setSelectedSize] = useState();
 
-  // TODO: need add color,size,... from server
-
   const handleCart = (e) => {
     e.preventDefault();
     if (items.findIndex((item) => item.product.id === product.id) < 0) {
@@ -37,7 +35,6 @@ export default function ProductDetail() {
         newItem.size = selectedSize
       }
       dispatch(addToCartAsync({item: newItem, alert}));
-      // TODO: wait for server that item added or not
     } else {
       alert.error('Item already added to cart.');
     }
@@ -47,8 +44,6 @@ export default function ProductDetail() {
   useEffect(() => {
     dispatch(fetchProductByIdAsync(params.id));
   }, [dispatch, params.id])
-
-  // TODO: don't call api on going back
 
   return (
     <div className="bg-white">
@@ -126,7 +121,7 @@ export default function ProductDetail() {
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
             <p className="text-3xl tracking-tight text-gray-900 line-through">${product.price}</p>
-            <p className="text-3xl tracking-tight text-gray-900">${product.discountedPrice}</p>
+            <p className="text-3xl tracking-tight text-gray-900">${product.discountPrice}</p>
 
 
             {/* Reviews */}
@@ -158,9 +153,7 @@ export default function ProductDetail() {
                 <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-4">
                   <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
                   <div className="flex items-center space-x-3">
-                    {/* TODO: color from server 
-                      In ui change acc to data not hard coded
-                    */}
+                
                     {product.colors.map((color) => (
                       <RadioGroup.Option
                         key={color.name}
@@ -202,9 +195,7 @@ export default function ProductDetail() {
                 <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
                   <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
                   <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                    {/* TODO: fetch from server  
-                    Not hard coded
-                    */}
+                  
                     {product.sizes.map((size) => (
                       <RadioGroup.Option
                         key={size.name}
@@ -279,8 +270,7 @@ export default function ProductDetail() {
               <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
 
              {product.highlights &&  <div className="mt-4">
-                <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                  {/* TODO: Send from server */}
+                <ul className="list-disc space-y-2 pl-4 text-sm">
                   {product.highlights.map((highlight) => (
                     <li key={highlight} className="text-gray-400">
                       <span className="text-gray-600">{highlight}</span>

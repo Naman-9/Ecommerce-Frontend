@@ -22,8 +22,8 @@ import { Grid } from 'react-loader-spinner';
 
 const sortOptions = [
   { name: 'Best Rating', sort: 'rating', order: 'desc', current: false },
-  { name: 'Price: Low to High', sort: 'discountedPrice', order: 'asc', current: false },
-  { name: 'Price: High to Low', sort: 'discountedPrice', order: 'desc', current: false },
+  { name: 'Price: Low to High', sort: 'discountPrice', order: 'asc', current: false },
+  { name: 'Price: High to Low', sort: 'discountPrice', order: 'desc', current: false },
 ]
 
 
@@ -37,7 +37,7 @@ export default function ProductList() {
 
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
-  console.log("produts::::::::;", products);
+  
   const totalItems = useSelector(selectTotalItems);
   const brands = useSelector(selectBrands);
   const categories = useSelector(selectCategories);
@@ -78,7 +78,7 @@ export default function ProductList() {
       newFilter[section.id].splice(index, 1);
     }
 
-    console.log(newFilter);
+    
     setFilter(newFilter);
 
   }
@@ -398,7 +398,7 @@ function ProductGrid({ products, status }) {
                   </div>
                   <div>
                     <p className="text-sm font-medium line-through text-gray-500">$ {product.price}</p>
-                    <p className="text-sm font-bold text-gray-900">$ {product.discountedPrice}</p>
+                    <p className="text-sm font-bold text-gray-900">$ {product.discountPrice}</p>
                   </div>
                 </div>
                 {product.deleted && (
