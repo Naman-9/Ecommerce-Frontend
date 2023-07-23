@@ -1,15 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Dialog, Transition } from '@headlessui/react';
-import { XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, Navigate } from 'react-router-dom';
-import { deleteItemFromCartAsync, selectCartLoaded, selectCartStatus, selectItems, updateCartAsync } from './cartSlice';
+import { deleteItemFromCartAsync, selectCartLoaded, selectItems, updateCartAsync } from './cartSlice';
 import Modal from '../common/Modal';
 
 export default function Cart() {
 
   const items = useSelector(selectItems);
-  const status = useSelector(selectCartStatus);
   const cartLoaded = useSelector(selectCartLoaded)
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(null);

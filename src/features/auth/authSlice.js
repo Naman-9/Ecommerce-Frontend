@@ -7,7 +7,6 @@ import {
   resetPasswordRequest,
   resetPassword,
 } from './authAPI';
-import { selectUserInfo } from '../user/userSlice';
 
 const initialState = {
   loggedInUserToken: null, // this should only contain user identity => 'id'/'role'
@@ -116,7 +115,7 @@ export const authSlice = createSlice({
       .addCase(signOutAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.loggedInUserToken = null;
-        selectUserInfo
+        
       })
       .addCase(checkAuthAsync.pending, (state) => {
         state.status = 'loading';

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchLoggedInUserOrderAsync, selectUserInfo, selectUserInfoStatus, selectUserOrders } from '../userSlice';
+import { fetchLoggedInUserOrderAsync, selectUserInfoStatus, selectUserOrders } from '../userSlice';
 import { Grid } from 'react-loader-spinner';
 
 const UserOrders = () => {

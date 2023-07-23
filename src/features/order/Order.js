@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
 
 
 export default function Order() {
-  const dispatch = useDispatch();
 
 
   return (
