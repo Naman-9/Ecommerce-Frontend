@@ -4,19 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom';
 
 const Logout = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(selectLoggedInUser);
 
-    const dispatch = useDispatch();
-    const user = useSelector(selectLoggedInUser);
-  
-    useEffect(() => {
-      dispatch(signOutAsync());
-    });
-  return (
-    <>
-    {!user && < Navigate to="/" replace= {true} ></Navigate>}
-    </>
+  useEffect(() => {
+    console.log("Rendering Logout component");
+    dispatch(signOutAsync());
+  });
 
-  )
+  return <>{!user && <Navigate to="/login" replace={true}></Navigate>}</>;
 }
 
 export default Logout

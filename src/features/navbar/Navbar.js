@@ -12,15 +12,16 @@ const navigation = [
     { name: 'Orders', link: '/orders', user: true },
     { name: 'Products', link: '/admin', admin: true },
     { name: 'Orders', link: '/admin/orders', admin: true },
+    { name: 'LogOut', link: '/logout', admin: true, user: true },
 ]
 const userNavigation = [
     { name: 'Your Profile', link: '/profile' },
     { name: 'My Orders', link: '/orders' },
-    { name: 'Sign out', link: '/logout' },
+    { name: 'LogOut', link: '/logout' },
 ]
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(' '); 
 }
 
 
@@ -43,7 +44,7 @@ const Navbar = ({ children }) => {
                                                 <img
                                                     className="h-8 w-8"
                                                     src="/ecommerce.png"
-                                                    alt="Your Company"
+                                                    alt="Fashion Plus"
                                                 />
                                             </div>
                                         </Link>
@@ -68,20 +69,23 @@ const Navbar = ({ children }) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="hidden md:block">
+                                    <div className="hidden md:block relative">
                                         <div className="ml-4 flex items-center md:ml-6 ">
+                                            {/* Cart icon */}
                                             <Link to="/cart">
-                                                <button
-                                                    type="button"
-                                                    className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                                                >
-
-                                                    <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
-                                                </button>
-                                                {items.length > 0 && <span className="inline-flex items-center rounded-md mb-5 -ml-3 bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
-                                                    {items.length}
-                                                </span>
-                                                }
+                                                <div className="relative">
+                                                    <button
+                                                        type="button"
+                                                        className="flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                                    >
+                                                        <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                                                    </button>
+                                                    {items.length > 0 && (
+                                                        <span className="absolute -top-2 -right-2 inline-flex items-center rounded-full bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+                                                            {items.length}
+                                                        </span>
+                                                    )}
+                                                </div>
                                             </Link>
 
                                             {/* Profile dropdown */}
@@ -89,7 +93,7 @@ const Navbar = ({ children }) => {
                                                 <div>
                                                     <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                                         <span className="sr-only">Open user menu</span>
-                                                        <img className="h-8 w-8 rounded-full" src={userInfo.imageUrl} alt="" />
+                                                        <img className="h-8 w-8 rounded-full" src="./userImg.png" alt="UserImg" />
                                                     </Menu.Button>
                                                 </div>
                                                 <Transition
@@ -122,6 +126,7 @@ const Navbar = ({ children }) => {
                                             </Menu>
                                         </div>
                                     </div>
+
                                     <div className="-mr-2 flex md:hidden">
                                         {/* Mobile menu button */}
                                         <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -138,11 +143,9 @@ const Navbar = ({ children }) => {
 
                             <Disclosure.Panel className="md:hidden">
                                 <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                                    {navigation.map((item) => (
-                                        <Disclosure.Button
-                                            key={item.name}
-                                            as="a"
-                                            href={item.href}
+                                    {navigation.map((item) => item[userInfo.role] ? (
+                                        <Link
+                                            to={item.link}
                                             className={classNames(
                                                 item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                                 'block rounded-md px-3 py-2 text-base font-medium'
@@ -150,35 +153,41 @@ const Navbar = ({ children }) => {
                                             aria-current={item.current ? 'page' : undefined}
                                         >
                                             {item.name}
-                                        </Disclosure.Button>
-                                    ))}
+                                        </Link>
+
+                                    ) : null)}
                                 </div>
                                 <div className="border-t border-gray-700 pb-3 pt-4">
-                                    <div className="flex items-center px-5">
+                                    <Link to='/signout'>
+                                    <div to='/signout' className="flex items-center px-5">
                                         <div className="flex-shrink-0">
-                                            <img className="h-10 w-10 rounded-full" src={userInfo.imageUrl} alt="" />
+                                            <img className="h-10 w-10 rounded-full" src="./userImg.png" alt="UserImg" />
                                         </div>
-                                        <div className="ml-3">
+                                        <div className="ml-3 flex-grow">
                                             <div className="text-base font-medium leading-none text-white">{userInfo.name}</div>
                                             <div className="text-sm font-medium leading-none text-gray-400">{userInfo.email}</div>
                                         </div>
-                                        <div>
+
+                                        <div className="relative ml-auto">
                                             <Link to="/cart">
                                                 <button
                                                     type="button"
-                                                    className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                                    className="flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                                 >
                                                     <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
                                                 </button>
-                                                {items.length > 0 && <span className="inline-flex items-center rounded-md mb-5 -ml-3 bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
-                                                    {items.length}
-                                                </span>
-                                                }
+                                                {items.length > 0 && (
+                                                    <span className="absolute -top-2 -right-2 inline-flex items-center rounded-full bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+                                                        {items.length}
+                                                    </span>
+                                                )}
                                             </Link>
                                         </div>
                                     </div>
+                                    </Link>
+
                                     <div className="mt-3 space-y-1 px-2">
-                                        {userNavigation.map((item) => (
+                                        {userNavigation.map((item) => item[userInfo.role] ? (
                                             <Link
                                                 to={item.link} >
                                                 <Disclosure.Button
@@ -187,7 +196,8 @@ const Navbar = ({ children }) => {
                                                     {item.name}
                                                 </Disclosure.Button>
                                             </Link>
-                                        ))}
+                                        ) : null
+                                        )}
                                     </div>
                                 </div>
                             </Disclosure.Panel>
@@ -212,4 +222,4 @@ const Navbar = ({ children }) => {
     )
 }
 
-export default Navbar;
+export default Navbar; 

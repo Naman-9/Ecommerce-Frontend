@@ -7,7 +7,7 @@ import {
   resetPasswordRequest,
   resetPassword,
 } from './authAPI';
-import { updateUser } from '../user/userAPI';
+import { selectUserInfo } from '../user/userSlice';
 
 const initialState = {
   loggedInUserToken: null, // this should only contain user identity => 'id'/'role'
@@ -34,25 +34,20 @@ export const loginUserAsync = createAsyncThunk(
       const response = await loginUser(loginInfo);
       return response.data;
     } catch (error) {
-      
+      console.log(error);
       return rejectWithValue(error);
     }
   }
 );
 
-export const checkAuthAsync = createAsyncThunk(
-  'user/checkAuth',
-  async () => {
+export const checkAuthAsync = createAsyncThunk('user/checkAuth', async () => {
   try {
-    
     const response = await checkAuth();
-    
     return response.data;
   } catch (error) {
-    
+    console.log(error);
   }
 });
-
 export const resetPasswordRequestAsync = createAsyncThunk(
   'user/resetPasswordRequest',
   async (email,{rejectWithValue}) => {
@@ -60,7 +55,7 @@ export const resetPasswordRequestAsync = createAsyncThunk(
       const response = await resetPasswordRequest(email);
       return response.data;
     } catch (error) {
-      
+      console.log(error);
       return rejectWithValue(error);
 
     }
@@ -72,10 +67,10 @@ export const resetPasswordAsync = createAsyncThunk(
   async (data,{rejectWithValue}) => {
     try {
       const response = await resetPassword(data);
-      
+      console.log(response);
       return response.data;
     } catch (error) {
-      
+      console.log(error);
       return rejectWithValue(error);
 
     }
@@ -121,6 +116,7 @@ export const authSlice = createSlice({
       .addCase(signOutAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.loggedInUserToken = null;
+        selectUserInfo
       })
       .addCase(checkAuthAsync.pending, (state) => {
         state.status = 'loading';

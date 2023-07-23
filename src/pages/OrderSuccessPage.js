@@ -44,4 +44,4 @@ const OrderSuccessPage = () => {
     )
 }
 
-export default OrderSuccessPage
+export default OrderSuccessPage;

@@ -154,7 +154,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/logout',
-    element: <Logout></Logout>,
+    element: <Protected><Logout></Logout></Protected>,
   },
   {
     path: '/forgot-password',

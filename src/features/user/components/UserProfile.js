@@ -45,20 +45,25 @@ export default function UserProfile() {
         const newUser = { ...userInfo, addresses: [...userInfo.addresses, address] };
         dispatch(updateUserAsync(newUser));
         setShowAddAddressForm(false);
-    }
+    };
+
+    const onCancel = () => {
+        setSelectedEditIndex(-1); 
+        reset(); 
+      };
 
     return (
         <div>
             <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                     <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
-                        Name: {userInfo.name ? userInfo.name : 'New User'}
+                        Name: {userInfo.name ? userInfo.name : ''}
                     </h1>
                     <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
-                        email address : {userInfo.email}
+                        Email address : {userInfo.email}
                     </h3>
                     {userInfo.role === 'admin' && <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
-                        Role : {userInfo.role}
+                        Role : {userInfo.role && userInfo.role.charAt(0).toUpperCase() + userInfo.role.slice(1)}
                     </h3> }
                 </div>
 
@@ -76,7 +81,6 @@ export default function UserProfile() {
                             className="bg-white px-5 py-12 mt-12"
                             noValidate
                             onSubmit={handleSubmit((data) => {
-                                
                                 handleAdd(data);
                                 reset();
                             })}
@@ -264,8 +268,8 @@ export default function UserProfile() {
 
                                 <div className="mt-6 flex items-center justify-end gap-x-6">
                                     <button
-                                        onClick={(e) => setSelectedEditIndex(-1)}
-                                        type="submit"
+                                        onClick={onCancel}
+                                        type="button"
                                         name="cancel"
                                         className="rounded-md bg-slate-300 px-3 py-2 text-sm font-semibold text-grey shadow-sm hover:bg-grey-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                     >
@@ -478,8 +482,8 @@ export default function UserProfile() {
 
                                         <div className="mt-6 flex items-center justify-end gap-x-6">
                                             <button
-                                                onClick={(e) => setSelectedEditIndex(-1)}
-                                                type="submit"
+                                                onClick={onCancel}
+                                                type="button"
                                                 name="cancel"
                                                 className="rounded-md px-3 py-2 text-sm font-semibold text-grey shadow-sm hover:bg-grey-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                             >

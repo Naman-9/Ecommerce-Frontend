@@ -11,7 +11,6 @@ const HomePage = () => {
       <Navbar>
         <ProductList />
       </Navbar>
-      <Link to="/admin">Admin</Link>
       <Footer />
     </>
   )

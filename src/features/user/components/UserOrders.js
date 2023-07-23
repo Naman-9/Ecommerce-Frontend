@@ -100,16 +100,18 @@ const UserOrders = () => {
         </div>
       ))}
       {status === 'loading' ? (
+        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-filter backdrop-blur-sm bg-opacity-70">
         <Grid
           height="80"
           width="80"
-          color="rgb(79, 70, 229) "
+          color="rgb(79, 70, 229)"
           ariaLabel="grid-loading"
           radius="12.5"
           wrapperStyle={{}}
           wrapperClass=""
           visible={true}
         />
+      </div>
       ) : null}
     </div>
   );

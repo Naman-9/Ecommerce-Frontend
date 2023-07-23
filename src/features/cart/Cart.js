@@ -60,31 +60,26 @@ export default function Cart() {
                           Qty
                         </label>
                         <select className='' onChange={(e) => handleQuantity(e, item)} value={item.quantity}>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="3">3</option>
-                          <option value="3">3</option>
+                          {[...Array(10)].map((_, index) => (
+                            <option key={index + 1} value={index + 1}>{index + 1}</option>
+                          ))}
                         </select>
 
-                        {/* {product.quantity} */}
-
                       </div>
-                      {/* FOR DELETE AS WELL PUT  (item.) */}
 
                       <div className="flex">
                         <Modal
-                          title= {`Remove ${item.title} from cart?`}
+                          title={`Remove ${item.product.title} from cart?`}
                           message="Are You sure you want to remove this item from cart."
                           dangerOption="Remove"
                           cancelOption="Cancel"
-                          dangerAction={(e) => handleRemove(e, item.id)}
-                          cancelModal={() => setOpenModal(-1)}
-                          showModal={openModal === item.id}
+                          dangerAction={(e) => handleRemove(e, item.product.id)}
+                          cancelAction={() => setOpenModal(-1)}
+                          showModal={openModal === item.product.id}
                         />
                         <button
                           type="button"
-                          onClick={e => { setOpenModal(item.id) }}
+                          onClick={e => { setOpenModal(item.product.id) }}
                           className="font-medium text-indigo-600 hover:text-indigo-500"
                         >
                           Remove
@@ -98,8 +93,6 @@ export default function Cart() {
             </ul>
           </div>
 
-
-
           <div className="border-t border-gray-200 px-4 py-6 mt-6 sm:px-6">
             <div className="flex my-2 justify-between text-base font-medium text-gray-900">
               <p>Subtotal</p>
@@ -110,7 +103,7 @@ export default function Cart() {
               <p>{totalItems}</p>
             </div>
             <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
-            <div className="mt-6">
+            <div className="mt-6art">
               <Link
                 to="/checkout"
                 className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"

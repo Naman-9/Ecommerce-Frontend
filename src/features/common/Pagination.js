@@ -40,6 +40,7 @@ export default function Pagination({  page, setPage, handlePage, totalItems  }) 
               {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
               {Array.from({ length: Math.ceil(totalItems / ITEMS_PER_PAGE) }).map((el, index) =>
                 <div
+                  key={index}
                   onClick={e => handlePage(index + 1)}
                   aria-current="page"
                   className={`relative cursor-pointer z-10 inline-flex 
