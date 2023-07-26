@@ -58,7 +58,7 @@ export default function CheckoutForm() {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `https://mern-ecommerce-lyart.vercel.app/order-success/${currentOrder.id}`,
+        return_url: `https://ecommerce-app-rosy-omega.vercel.app/order-success/${currentOrder.id}`,
       },
     });
 
