@@ -43,7 +43,7 @@ const Navbar = ({ children }) => {
                                             <div className="flex-shrink-0">
                                                 <img
                                                     className="h-8 w-8"
-                                                    src="/ecommerce.png"
+                                                    src="./ecommerce.png"
                                                     alt="Fashion Plus"
                                                 />
                                             </div>

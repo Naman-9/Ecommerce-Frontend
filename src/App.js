@@ -35,7 +35,7 @@ import PageNotFound from './pages/PageNotFound';
 
 const options = {
   timeout: 5000,
-  position: positions.BOTTOM_LEFT,
+  position: positions.TOP_RIGHT,
 };
 
 const router = createBrowserRouter([
