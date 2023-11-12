@@ -21,8 +21,8 @@ export default function SignUp() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/158x48/transistor-logo-indigo-900.svg"
-            alt="Your Company"
+            src="./ecommerce.png"
+            alt="Ecom"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Register Your  account
