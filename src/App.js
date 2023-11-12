@@ -42,9 +42,9 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <Protected>
+      
         <HomePage ></HomePage>
-      </Protected>
+      
     ),
   },
   {
